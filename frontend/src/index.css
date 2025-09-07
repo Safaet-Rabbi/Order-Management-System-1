@@ -1,16 +1,28 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
 :root {
-  --primary-color: #6a5acd; /* Purple */
-  --secondary-color: #f0f2f5; /* Light Gray */
+  --primary-color: #4a90e2;
+  --secondary-color: #50e3c2;
+  --background-color: #f4f7f6;
+  --card-background-color: #ffffff;
   --text-color: #333;
-  --light-text-color: #666;
-  --border-color: #ddd;
+  --light-text-color: #777;
+  --border-color: #e0e0e0;
+  --danger-color: #d0021b;
+  --success-color: #7ed321;
   --white: #fff;
-  --success: #28a745;
-  --warning: #ffc107;
-  --info: #17a2b8;
-  --danger: #dc3545;
+}
+
+body.dark-mode {
+  --primary-color: #6a8aff;
+  --secondary-color: #1e1e1e;
+  --background-color: #121212;
+  --card-background-color: #1e1e1e;
+  --text-color: #e0e0e0;
+  --light-text-color: #a0a0a0;
+  --border-color: #444444;
+  --danger-color: #ff4d4d;
+  --success-color: #7ed321;
 }
 
 * {
@@ -23,8 +35,9 @@ body {
   font-family: 'Poppins', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: var(--secondary-color);
+  background-color: var(--background-color);
   color: var(--text-color);
+  transition: background-color 0.3s, color 0.3s;
 }
 
 #root {
@@ -47,11 +60,12 @@ ul {
 }
 
 .card {
-  background-color: var(--white);
+  background-color: var(--card-background-color);
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
   padding: 20px;
   margin-bottom: 20px;
+  border: 1px solid var(--border-color);
 }
 
 .header {
@@ -103,6 +117,8 @@ ul {
   border: 1px solid var(--border-color);
   border-radius: 5px;
   font-size: 1rem;
+  background-color: var(--background-color);
+  color: var(--text-color);
 }
 
 .table-responsive {
@@ -123,7 +139,7 @@ ul {
 }
 
 .data-table th {
-  background-color: #f8f9fa;
+  background-color: var(--card-background-color);
   font-weight: 600;
   color: var(--light-text-color);
   font-size: 0.85rem;
@@ -131,7 +147,7 @@ ul {
 }
 
 .data-table tbody tr:hover {
-  background-color: #f5f5f5;
+  background-color: rgba(0,0,0,0.1);
 }
 
 .status-badge {
@@ -142,28 +158,28 @@ ul {
 }
 
 .status-badge.shipped {
-  background-color: #e0e0ff; /* Light purple */
+  background-color: #e0e0ff;
   color: var(--primary-color);
 }
 
 .status-badge.processing {
-  background-color: #fff3cd; /* Light yellow */
-  color: var(--warning);
+  background-color: #fff3cd;
+  color: #ffc107;
 }
 
 .status-badge.delivered {
-  background-color: #d4edda; /* Light green */
-  color: var(--success);
+  background-color: #d4edda;
+  color: #28a745;
 }
 
 .status-badge.in-transit {
-  background-color: #cce5ff; /* Light blue */
-  color: var(--info);
+  background-color: #cce5ff;
+  color: #17a2b8;
 }
 
 .status-badge.pending {
-  background-color: #f8d7da; /* Light red */
-  color: var(--danger);
+  background-color: #f8d7da;
+  color: #dc3545;
 }
 
 .action-buttons button {
@@ -175,18 +191,19 @@ ul {
   padding: 5px;
   border-radius: 3px;
   transition: background-color 0.2s ease-in-out;
+  color: var(--light-text-color);
 }
 
 .action-buttons button:hover {
-  background-color: #eee;
+  background-color: var(--border-color);
 }
 
 .action-buttons .edit-btn {
-  color: var(--info);
+  color: var(--primary-color);
 }
 
 .action-buttons .delete-btn {
-  color: var(--danger);
+  color: var(--danger-color);
 }
 
 .search-input {
@@ -195,6 +212,8 @@ ul {
   border-radius: 5px;
   font-size: 0.9rem;
   width: 250px;
+  background-color: var(--card-background-color);
+  color: var(--text-color);
 }
 
 /* Auth Pages */
@@ -203,11 +222,11 @@ ul {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background-color: var(--secondary-color);
+  background-color: var(--background-color);
 }
 
 .auth-card {
-  background-color: var(--white);
+  background-color: var(--card-background-color);
   padding: 40px;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -244,12 +263,13 @@ ul {
 /* Sidebar Specific Styles */
 .sidebar {
   width: 250px;
-  background-color: var(--white);
+  background-color: var(--card-background-color);
   box-shadow: 2px 0 5px rgba(0, 0, 0, 0.05);
   display: flex;
   flex-direction: column;
   padding: 20px;
   flex-shrink: 0;
+  border-right: 1px solid var(--border-color);
 }
 
 .sidebar .logo {
@@ -355,12 +375,13 @@ ul {
 
 /* Navbar specific styles */
 .navbar {
-  background-color: var(--white);
+  background-color: var(--card-background-color);
   padding: 15px 20px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
   display: flex;
   justify-content: space-between;
   align-items: center;
+  border-bottom: 1px solid var(--border-color);
 }
 
 .navbar .title h1 {
@@ -393,7 +414,7 @@ ul {
   position: absolute;
   top: -5px;
   right: -5px;
-  background-color: var(--danger);
+  background-color: var(--danger-color);
   color: var(--white);
   border-radius: 50%;
   padding: 2px 6px;
@@ -427,7 +448,7 @@ ul {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 120px; /* Fixed height for consistent look */
+  height: 120px;
 }
 
 .dashboard-card.total-orders {
@@ -435,15 +456,15 @@ ul {
 }
 
 .dashboard-card.total-revenue {
-  background-color: var(--success);
+  background-color: var(--success-color);
 }
 
 .dashboard-card.total-customers {
-  background-color: #9c27b0; /* A darker purple */
+  background-color: #9c27b0;
 }
 
 .dashboard-card.total-products {
-  background-color: #ff5722; /* Orange-red */
+  background-color: #ff5722;
 }
 
 .dashboard-card h3 {
@@ -485,13 +506,13 @@ ul {
   height: 8px;
   border-radius: 50%;
   margin-right: 10px;
-  margin-top: 6px; /* Align with text */
+  margin-top: 6px;
   flex-shrink: 0;
 }
 
 .recent-activity-list li .dot.shipped { background-color: var(--primary-color); }
 .recent-activity-list li .dot.processing { background-color: var(--warning); }
-.recent-activity-list li .dot.delivered { background-color: var(--success); }
+.recent-activity-list li .dot.delivered { background-color: var(--success-color); }
 
 .recent-activity-list li .content span {
   display: block;
@@ -515,12 +536,12 @@ ul {
 }
 
 .low-stock-alert-card .alert-item p {
-  color: var(--danger);
+  color: var(--danger-color);
   font-weight: 500;
 }
 
 .low-stock-alert-card .alert-item .icon {
-  color: var(--danger);
+  color: var(--danger-color);
   font-size: 1.2rem;
 }
 
@@ -540,7 +561,7 @@ ul {
 }
 
 .modal-content {
-  background: var(--white);
+  background: var(--card-background-color);
   padding: 30px;
   border-radius: 8px;
   width: 500px;
@@ -573,7 +594,7 @@ ul {
 }
 
 .modal-content .input-group {
-  margin-bottom: 0; /* Override default margin */
+  margin-bottom: 0;
 }
 
 .modal-content .form-actions {

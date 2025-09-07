@@ -95,7 +95,7 @@ const Dashboard = () => {
         <div className="header">
           <h2>Recent Orders</h2>
           {/* A search input could be added here, but for simplicity, we'll keep it as-is for now */}
-          <input type="text" placeholder="Search orders..." className="search-input" />
+          {/* <input type="text" placeholder="Search orders..." className="search-input" /> */}
         </div>
         {metrics.recentActivity.length > 0 ? (
           <OrderTable orders={metrics.recentActivity} showActions={false} />

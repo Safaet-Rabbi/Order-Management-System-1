@@ -211,7 +211,7 @@ const Orders = () => {
                     value={item.product}
                     onChange={(e) => handleItemChange(index, e)}
                     required
-                    style={{ flex: 2 }}
+                    style={{ width: '60%' }}
                   >
                     <option value="">Select Product</option>
                     {products.map((prod) => (
@@ -227,11 +227,11 @@ const Orders = () => {
                     onChange={(e) => handleItemChange(index, e)}
                     min="1"
                     required
-                    style={{ flex: 0.8 }}
+                    style={{ width: '20%' }}
                     placeholder="Qty"
                   />
                   {formData.items.length > 1 && (
-                    <button type="button" onClick={() => handleRemoveItem(index)} className="button cancel" style={{ padding: '8px 12px' }}>
+                    <button type="button" onClick={() => handleRemoveItem(index)} className="button cancel" style={{ width: '20%', padding: '8px 12px' }}>
                       Remove
                     </button>
                   )}

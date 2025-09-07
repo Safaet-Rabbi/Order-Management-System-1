@@ -17,7 +17,7 @@ const CustomerTable = ({ customers, onEdit, onDelete }) => {
         <tbody>
           {customers.map((customer) => (
             <tr key={customer._id}>
-              <td>CUST{customer._id.substring(0, 4).toUpperCase()}</td>
+              <td>CUST{customer._id.substring(customer._id.length - 6).toUpperCase()}</td>
               <td>{customer.name}</td>
               <td>{customer.email}</td>
               <td>{customer.phone || 'N/A'}</td>

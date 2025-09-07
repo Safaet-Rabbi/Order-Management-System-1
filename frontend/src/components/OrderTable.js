@@ -35,7 +35,7 @@ const OrderTable = ({ orders, onEdit, onDelete, showActions = true }) => {
         <tbody>
           {orders.map((order) => (
             <tr key={order._id}>
-              <td>ORD{order._id.substring(0, 4).toUpperCase()}</td>
+              <td>ORD{order._id.substring(order._id.length - 6).toUpperCase()}</td>
               <td>{order.customer?.name || 'N/A'}</td>
               <td>{order.items.length} item(s)</td>
               <td>${order.total.toFixed(2)}</td>

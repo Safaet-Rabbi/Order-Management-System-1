@@ -24,16 +24,11 @@ export const AuthProvider = ({ children }) => {
           'Content-Type': 'application/json',
         },
       };
-      // const { data } = await axios.post(
-      //   '/api/users/login',
-      //   { email, password },
-      //   config
-      // );
       const { data } = await axios.post(
-  'http://localhost:5000/api/users/login',
-  { email, password },
-  config
-);
+        'http://localhost:5000/api/users/login',
+        { email, password },
+        config
+      );
 
       localStorage.setItem('userInfo', JSON.stringify(data));
       setUser(data);
@@ -51,16 +46,11 @@ export const AuthProvider = ({ children }) => {
           'Content-Type': 'application/json',
         },
       };
-      // const { data } = await axios.post(
-      //   '/api/users/register',
-      //   { name, email, password },
-      //   config
-      // );
       const { data } = await axios.post(
-  'http://localhost:5000/api/users/register', // <-- full backend URL
-  { name, email, password },
-  config
-);
+        'http://localhost:5000/api/users/register', // <-- full backend URL
+        { name, email, password },
+        config
+      );
 
       localStorage.setItem('userInfo', JSON.stringify(data));
       setUser(data);
@@ -77,8 +67,13 @@ export const AuthProvider = ({ children }) => {
     navigate('/login');
   };
 
+  const updateUser = (updatedUser) => {
+    localStorage.setItem('userInfo', JSON.stringify(updatedUser));
+    setUser(updatedUser);
+  };
+
   return (
-    <AuthContext.Provider value={{ user, loading, login, register, logout }}>
+    <AuthContext.Provider value={{ user, loading, login, register, logout, updateUser }}>
       {children}
     </AuthContext.Provider>
   );

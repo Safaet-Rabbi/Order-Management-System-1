@@ -17,7 +17,7 @@ const ProductTable = ({ products, onEdit, onDelete }) => {
         <tbody>
           {products.map((product) => (
             <tr key={product._id}>
-              <td>PROD{product._id.substring(0, 4).toUpperCase()}</td>
+              <td>PROD{product._id.substring(product._id.length - 6).toUpperCase()}</td>
               <td>{product.name}</td>
               <td>${product.price.toFixed(2)}</td>
               <td>{product.countInStock}</td>
